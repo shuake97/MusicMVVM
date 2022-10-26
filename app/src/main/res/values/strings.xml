@@ -1,3 +1,72 @@
 <resources>
-    <string name="app_name">Music-MVVM</string>
+    <string name="app_name">My MusicApp</string>
+    <string name="bot_home">首页</string>
+    <string name="bot_mv">MV</string>
+    <string name="bot_community">社区</string>
+    <string name="bot_mine">我的</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="msg_password_error">密码错误</string>
+    <string name="msg_user_error">用户名错误</string>
+    <string name="login_title">登 录</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="back">&lt;</string>
+    <string name="home_page">发现</string>
+    <string name="me">我的</string>
+    <string name="cloud">云村</string>
+    <string name="day_recommend">每日推荐</string>
+    <string name="playlist">歌单</string>
+    <string name="rank">排行榜</string>
+    <string name="radio">电台</string>
+    <string name="live">直播</string>
+    <string name="fm">私人FM</string>
+    <string name="recommend_playlist">懂你的精选歌单</string>
+    <string name="playlist_playground">查看更多</string>
+    <string name="login_phone_number">手机号登录</string>
+    <string name="press_exit_again">再按一次退出应用</string>
+    <string name="input_phone">请输入手机号</string>
+    <string name="input_pwd">请输入密码</string>
+    <string name="login">立即登录</string>
+    <string name="please_input_phonenumber">请输入手机号码</string>
+    <string name="please_input_phonenumber_correctly">请输入有效的电话号码</string>
+    <string name="please_input_pwd">请输入密码</string>
+    <string name="pwd_must_less_than_30">请输入小于30位的密码</string>
+    <string name="enter_correct_password">请正确输入密码</string>
+    <string name="search">搜索</string>
+    <string name="search_history">历史</string>
+    <string name="hot_search">热搜榜</string>
+
+
+    <string name="permission_denied">部分权限未授予</string>
+    <string name="need_ask_permission">您需要去设置当中同意存储权限</string>
+    <string name="btn_ok">确定</string>
+    <string name="btn_denied">拒绝</string>
+    <string name="bottom_home">发现</string>
+    <string name="bottom_podcast">播客</string>
+    <string name="bottom_my">我的</string>
+    <string name="bottom_follow">关注</string>
+    <string name="song_no">还没有歌曲哦~</string>
+    <string name="repeat_none">列表循环</string>
+    <string name="repeat_one">单曲循环</string>
+    <string name="repeat_random">云随机</string>
+    <string name="vip">VIP</string>
+    <string name="music_type_sq">SQ</string>
+    <string name="music_type_hi">Hi-Res</string>
+    <string name="daily_play">播放全部</string>
+    <string name="no_copyright">亲爱的,暂无版权</string>
+    <string name="title_activity_mine_play_list">MinePlayListActivity</string>
+
+
 </resources>

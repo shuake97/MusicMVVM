@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModelLogin"
+            type="com.zww.music_mvvm.ui.login.LoginViewModel" />
+
+        <import type="android.text.InputType"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/login_background_image">
+        <include
+            android:id="@+id/title"
+            layout="@layout/ui_common_title"/>
+        <TextView
+            android:id="@+id/login_name"
+            android:text="@string/login_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_28"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp_130"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_below="@id/title"/>
+        <LinearLayout
+            android:id="@+id/layout_view1"
+            android:layout_below="@+id/login_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight = "1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@mipmap/ic_view_border_normal"
+            android:layout_marginTop="@dimen/dp_80"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+            <ImageView
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/login_user" />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="35dp"
+                android:text="@={viewModelLogin.username}"
+                android:layout_marginRight="@dimen/dp_80"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColorHint="#c0c0c0"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_view2"
+            android:layout_below="@+id/layout_view1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight = "1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@mipmap/ic_view_border_normal"
+            android:layout_marginTop="@dimen/dp_30"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+            <ImageView
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/login_pasw" />
+
+            <EditText
+                android:text="@={viewModelLogin.password}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="@dimen/dp_50"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:inputType="@{viewModelLogin.pswShow?InputType.TYPE_CLASS_TEXT:(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD)}"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:background="@null"
+                android:textColorHint="#c0c0c0"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_30"
+                android:textColor="@android:color/white"
+                android:shadowColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                android:src="@{viewModelLogin.pswShow?@drawable/ic_show:@drawable/ic_show_off}"
+                android:onClick="@{viewModelLogin.toggleShowPassword()}"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_45"
+            android:layout_below="@+id/layout_view2"
+            android:layout_marginTop="@dimen/dp_30"
+            android:text="@string/login"
+            android:background="@drawable/shape_btn_login_confirm"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="@dimen/dp_60"
+            android:layout_marginEnd="@dimen/dp_60"
+            />
+    </RelativeLayout>
+</layout>

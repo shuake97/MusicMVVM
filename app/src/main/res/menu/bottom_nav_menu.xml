@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/bot_home"
+        />
+    <item
+        android:id="@+id/mv"
+        android:icon="@drawable/ic_mv"
+        android:title="@string/bot_mv"
+        />
+    <item
+        android:id="@+id/community"
+        android:icon="@drawable/ic_community"
+        android:title="@string/bot_community"
+        />
+    <item
+        android:id="@+id/mine"
+        android:icon="@drawable/ic_mine"
+        android:title="@string/bot_mine"
+        />
+</menu>

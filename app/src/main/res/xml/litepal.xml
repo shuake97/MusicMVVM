@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<litepal>
+    <dbname value="musicHome" ></dbname>
+    <!--没修过一次或是新增数据库实体类这里都要+1-->
+    <version value="1"></version>
+    <list>
+        <mapping class="com.zww.music_mvvm.data.bean.BannerSQ"/>
+        <mapping class="com.zww.music_mvvm.data.bean.RecommendSQ"/>
+    </list>
+
+</litepal>
