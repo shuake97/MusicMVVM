@@ -8,6 +8,7 @@ import com.zww.music_mvvm.data.bean.DailySongsBean;
 import com.zww.music_mvvm.data.bean.HomeDiscoverBean;
 import com.zww.music_mvvm.data.bean.Login_Bean;
 import com.zww.music_mvvm.data.bean.LyricBean;
+import com.zww.music_mvvm.data.bean.PlaylistBean;
 import com.zww.music_mvvm.data.bean.RecentSongInfoBean;
 import com.zww.music_mvvm.data.bean.RecommendListBean;
 import com.zww.music_mvvm.data.bean.VipInfoBean;
@@ -45,5 +46,8 @@ public interface ApiService {
 
     @GET("lyric") //获取歌词
     Observable<LyricBean> getLyric(@Query("id") long songId);
+
+    @GET("playlist/detail")
+    Observable<PlaylistBean> getPlayList(@Query("id")long creativeId);
 
 }

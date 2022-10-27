@@ -33,7 +33,6 @@ public class MgcAdapter extends RecyclerView.Adapter<MgcViewHolder> {
 
     public MgcAdapter(Context mContext) {
         this.mContext = mContext;
-//        dataList = new ArrayList<>();
     }
 
     public void setOnItemClick(OnItemClick onItemClick) {
@@ -64,16 +63,6 @@ public class MgcAdapter extends RecyclerView.Adapter<MgcViewHolder> {
         holder.tvTitle.setText(bean.getUiElement().getMainTitle().getTitle());
         holder.tvCount.setText(bean.getResources().get(0).getResourceExtInfo().getPlayCount()+"");
         BindingAdapter.loadRadiusImage(holder.imRecommend,bean.getUiElement().getImage().getImageUrl());
-//        RequestOptions options = new RequestOptions()
-//                .placeholder(R.mipmap.loading)
-//                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-//                .transform(new CenterCrop(),new RoundedCorners(10))
-//                .error(R.mipmap.ic_launcher);
-//        Glide.with(mContext)
-//                .load(bean.getUiElement().getImage().getImageUrl())
-//                .transition(new DrawableTransitionOptions().crossFade())
-//                .apply(options)
-//                .into(holder.imRecommend);
     }
 
 

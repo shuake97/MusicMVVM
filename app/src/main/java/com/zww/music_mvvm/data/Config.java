@@ -55,6 +55,11 @@ public interface Config {
 
         public static final String MUSIC_INFO = "MUSIC_INFO";
 
+        public static final String PLAYLIST_ID = "PLAYLIST_ID";
+
+        public static final String PLAY_NAME = "PLAY_NAME";
+
+
         //设置默认超时时间
         public static final int DEFAULT_TIME=6;
 

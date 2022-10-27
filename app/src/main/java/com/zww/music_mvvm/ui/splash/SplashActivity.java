@@ -88,16 +88,16 @@ public class SplashActivity extends BaseActivity {
                         .getAuthToken("");
                 Log.e("数据",authToken);
 
-//                if (!TextUtils.isEmpty(authToken)){
-//                    //进入主界面
-//                    ARouter.getInstance()
-//                            .build(Config.ROUTE_HOME)//跳转到选择按钮页面
-//                            .withFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                            .navigation(SplashActivity.this);
-//                    overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);  // 动画
-//                    finish();
-//                    return;
-//                }
+                if (!TextUtils.isEmpty(authToken)){
+                    //进入主界面
+                    ARouter.getInstance()
+                            .build(Config.ROUTE_HOME)//跳转到选择按钮页面
+                            .withFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .navigation(SplashActivity.this);
+                    overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);  // 动画
+                    finish();
+                    return;
+                }
 
                 ARouter.getInstance()
                         .build(Config.ROUTE_LOGINSELECT)//跳转到选择按钮页面

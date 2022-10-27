@@ -103,7 +103,6 @@ dependencies {
     //Jsoup
     implementation 'org.jsoup:jsoup:1.13.1'
 
-
     implementation 'androidx.navigation:navigation-fragment:2.5.0'
     implementation 'androidx.navigation:navigation-ui:2.5.0'
     testImplementation 'junit:junit:4.13.2'
