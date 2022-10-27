@@ -13,9 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.hjq.toast.ToastUtils;
 
 import com.tencent.smtt.sdk.QbSdk;
@@ -28,7 +25,6 @@ import com.zww.music_mvvm.data.Config;
 import com.zww.music_mvvm.databinding.ActivityWebBinding;
 import com.zww.music_mvvm.utils.ClickUtil;
 
-@Route(path = Config.ROUTE_WEB)
 public class WebActivity extends BaseActivity {
 
     private ActivityWebBinding binding;
@@ -36,21 +32,19 @@ public class WebActivity extends BaseActivity {
     WebView webView;
     TextView title;
 
-    @Autowired(name = "url") String url;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(binding.getRoot());
         // 使用ARouter 对本页面的属性通过传入的参数进行注入。
-        ARouter.getInstance().inject(this);
-
+        url = getIntent().getStringExtra("web_url");
         initView();
     }
 
     private void initView() {
         binding.web.setSettings(this);
-//        String url = getIntent().getStringExtra(BANNER_URI);
         binding.web.getTitle(title->{
             binding.title.tvTitle.setText(title);
             binding.title.tvTitle.setVisibility(View.VISIBLE);

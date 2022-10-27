@@ -44,6 +44,8 @@ public class MainViewModel extends BaseViewModel {
 
     public MusicInfo currentMusicInfo;
 
+    public List<Fragment> mFragments;
+
     public Observable<RecentSongInfoBean> getRecentSong(){
         return RetrofitUtils.getmApi().getRecentSong(1);
     }
@@ -52,6 +54,7 @@ public class MainViewModel extends BaseViewModel {
         this.state = state;
         ui = state.get(KEY_MAIN_UI) == null ? new UserInfoUi(new ObservableField<>(""),new ObservableField<>(""), new ObservableInt(0),new ObservableField<>(""),new ObservableField<>(""),new ObservableField<>(""))
                 :state.get(KEY_MAIN_UI);
+        Log.d("VIEWMODE","construct");
     }
 
 //    初始化UI
@@ -70,13 +73,19 @@ public class MainViewModel extends BaseViewModel {
         }
     }
 
-    @Override
-    public void onCreate(@NonNull LifecycleOwner owner) {
-        super.onCreate(owner);
-        Log.d("MVM","onCreate");
-//        initFragment();
+    public void initFragments(){
+        mFragments = new ArrayList<>();
+        mFragments.add(new HomeFragment());
+        mFragments.add(new MvFragment());
+        mFragments.add(new CommunityFragment());
+        mFragments.add(new MineFragment());
     }
 
-
+    public List<Fragment> getmFragments(){
+        if (mFragments == null){
+            initFragments();
+        }
+        return mFragments;
+    }
 
 }

@@ -16,7 +16,6 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.android.material.navigation.NavigationBarView;
 import com.hjq.toast.ToastUtils;
 import com.tobery.musicplay.MusicPlay;
@@ -43,7 +42,6 @@ import com.zww.music_mvvm.utils.StaticMethodUtils;
 import java.util.ArrayList;
 import java.util.List;
 import android.Manifest;
-@Route(path = Config.ROUTE_HOME)
 public class MainActivity extends BaseActivity implements NavigationBarView.OnItemSelectedListener {
 
     private MainViewModel viewMode;
@@ -51,16 +49,6 @@ public class MainActivity extends BaseActivity implements NavigationBarView.OnIt
     ViewPagerAdapterForNav pageAdapter;
     private List<Fragment> mFragments;
     PermissionChecks checks;  //音乐播放器权限检测
-    private long firstTime = 0;
-
-    private final String[] APP_PERMISSIONS = new ArrayList<String>(){
-        {
-            add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            add(Manifest.permission.READ_EXTERNAL_STORAGE);
-            add(Manifest.permission.RECORD_AUDIO);
-            add(Manifest.permission.READ_PHONE_STATE);
-        }
-    }.toArray(new String[0]);
 
 
     @Override
@@ -68,13 +56,10 @@ public class MainActivity extends BaseActivity implements NavigationBarView.OnIt
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         viewMode = new ViewModelProvider(this).get(MainViewModel.class);
-//        binding.setLifecycleOwner(this);
-        mlifecycle.addObserver(viewMode);
+        binding.setLifecycleOwner(this);
         checks = new PermissionChecks(this);
         initView();
         initBottomBar();
-        initObserver();
-
     }
 
     private void initBottomBar() {
@@ -146,57 +131,30 @@ public class MainActivity extends BaseActivity implements NavigationBarView.OnIt
 
     }
 
+
+
     private void initView(){
-        mFragments = new ArrayList<>();
-        mFragments.add(new HomeFragment());
-        mFragments.add(new MvFragment());
-        mFragments.add(new CommunityFragment());
-        mFragments.add(new MineFragment());
 
         binding.viewpage2.setUserInputEnabled(false); //禁止滑动
-        pageAdapter = new ViewPagerAdapterForNav(getSupportFragmentManager(), mlifecycle, mFragments);
+        pageAdapter = new ViewPagerAdapterForNav(getSupportFragmentManager(), mlifecycle, viewMode.getmFragments());
         binding.viewpage2.setAdapter(pageAdapter);
         binding.viewpage2.setOffscreenPageLimit(4);
         binding.botNav.setOnItemSelectedListener(this);
         binding.viewpage2.registerOnPageChangeCallback(onPageChange);
     }
+
     private ViewPager2.OnPageChangeCallback onPageChange = new ViewPager2.OnPageChangeCallback() {
         @Override
         public void onPageSelected(int position) {
             super.onPageSelected(position);
             binding.botNav.getMenu().getItem(position).setChecked(true);
-//            tonPageSelected(position);
         }
     };
 
 
-
-    private void initObserver() {
-    }
-
     @Override
     protected View getDataBind() {
         return binding.getRoot();
-    }
-
-    //    nav 的选择  名字不能重复tonPageSelected
-    public void tonPageSelected(int position){
-        switch (position){
-            case 0:
-                binding.botNav.setSelectedItemId(R.id.home);
-                break;
-            case 1:
-                binding.botNav.setSelectedItemId(R.id.mv);
-                break;
-            case 2:
-                binding.botNav.setSelectedItemId(R.id.community);
-                break;
-            case 3:
-                binding.botNav.setSelectedItemId(R.id.mine);
-                break;
-            default:
-                break;
-        }
     }
 
     @Override
@@ -273,19 +231,4 @@ public class MainActivity extends BaseActivity implements NavigationBarView.OnIt
 
         }
     }
-//
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP){
-//            long secondTime = System.currentTimeMillis();
-//            if (secondTime - firstTime >2000){
-//                ToastUtils.show("再按一次退出程序");
-//                firstTime = secondTime;
-//                return true;
-//            }else {
-//                AppManager.getAppManager().AppExit();
-//            }
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
 }

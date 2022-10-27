@@ -19,7 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.multidex.MultiDex;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.hjq.toast.ToastUtils;
 import com.hjq.toast.style.BlackToastStyle;
 import com.tencent.smtt.export.external.TbsCoreSettings;
@@ -123,8 +122,6 @@ public class App extends Application {
         pool.submit(new Runnable() {
             @Override
             public void run() {
-//                MultiDex.install(instance);
-                ARouter.init(instance);
                 mCountDownLatch.countDown();
             }
         });

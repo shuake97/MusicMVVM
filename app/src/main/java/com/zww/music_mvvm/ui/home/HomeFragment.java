@@ -15,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.gson.Gson;
 import com.youth.banner.config.IndicatorConfig;
 import com.youth.banner.indicator.RectangleIndicator;
@@ -78,12 +77,13 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initObserver() {
-        viewMode.getBanner(2).compose(RXHelper.observableIO2Main(getContext()))
+        viewMode.getBanner(1)//.compose(RXHelper.observableIO2Main(getContext()))
                 .subscribe(new StaticMethodUtils.OnCallback<banner_bean>(){
                     @Override
                     public void onNext(banner_bean banner_bean) {
                         if (banner_bean.getCode() == 200){
                             updateBanner(banner_bean.getBanners());
+                            Log.d("BannerSize"," "+banner_bean.toString()+"");
                         }
                     }
                     @Override
@@ -92,6 +92,7 @@ public class HomeFragment extends BaseFragment {
                         queryDb();
                     }
                 });
+
         viewMode.requireDiscover(false).compose(RXHelper.observableIO2Main(getContext()))
                 .subscribe(new StaticMethodUtils.OnCallback<HomeDiscoverBean>(){
                     @Override
@@ -225,10 +226,11 @@ public class HomeFragment extends BaseFragment {
                         public void OnBannerClick(Object data, int position) {
                             // 点击事件
                             Log.e("OnBannerClick", list_banner_sq.get(position).getUrl());
-                            ARouter.getInstance()
-                                    .build(Config.ROUTE_WEB)
-                                    .withString("url", list_banner_sq.get(position).getUrl())
-                                    .navigation(getActivity());
+                            Intent intent = new Intent(getActivity(),WebActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("web_url",list_banner_sq.get(position).getUrl());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         }
                     })
                     .setBannerRound(10f);  // 设置圆角
@@ -260,26 +262,17 @@ public class HomeFragment extends BaseFragment {
                     .setOnBannerListener((data, position) -> {
                         //只有url不为空才表示有web网页可以加载
                         //出现的问题，存在一些url为null值。
-                        Log.e("OnBannerClick",
-                                list_banner_sq.get(position).getUrl()==null?"null":list_banner_sq.get(position).getUrl());
                         if (list_banner_sq.get(position).getUrl() != null) {
                             Log.e("OnBannerClick", list_banner_sq.get(position).getUrl());
-                            ARouter.getInstance()
-                                    .build(Config.ROUTE_WEB)
-                                    .withString("url", list_banner_sq.get(position).getUrl())
-                                    .navigation(getActivity());
+                            Intent intent = new Intent(getActivity(),WebActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("web_url",list_banner_sq.get(position).getUrl());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
 
                         }
                     });
 
-//            banner.setIndicator(new RectangleIndicator(getActivity()))
-//            .setIndicatorHeight(5)
-//            .setIndicatorWidth(6,6)
-//            .setIndicatorGravity(IndicatorConfig.Direction.CENTER)
-//            .setAdapter(new ImageTitleAdapter(list_banner_sq))
-//                .addBannerLifecycleObserver(getActivity())
-//                .setIntercept(true)
-//                .setBannerRound(10f);  // 设置圆角
             insertBannerDb();
         }
     }
@@ -311,7 +304,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-//
         position = binding.banner.getViewPager2().getCurrentItem();
     }
 

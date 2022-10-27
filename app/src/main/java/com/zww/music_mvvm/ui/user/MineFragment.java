@@ -38,7 +38,7 @@ import java.io.InputStream;
 public class MineFragment extends Fragment {
     private FragmentMineBinding binding;
 
-    private MainViewModel homeViewMode;
+    private MainViewModel homeViewMode;  //在次创建了一个ViewModel，导致了构造函数调用了两次
 
     private MineFragmentViewModel viewModel;
 

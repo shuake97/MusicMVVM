@@ -59,11 +59,5 @@ public interface Config {
 
         public static final String PLAY_NAME = "PLAY_NAME";
 
-
-        //设置默认超时时间
-        public static final int DEFAULT_TIME=6;
-
-        public final static  String BaseUrl = "http://10.0.0.2:3030/";
-
     }
 }

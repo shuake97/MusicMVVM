@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewModelLogin"
+            name="vm_login"
             type="com.zww.music_mvvm.ui.login.LoginViewModel" />
 
         <import type="android.text.InputType"/>
@@ -52,7 +52,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginLeft="35dp"
-                android:text="@={viewModelLogin.username}"
+                android:text="@={vm_login.username}"
                 android:layout_marginRight="@dimen/dp_80"
                 android:background="@null"
                 android:inputType="number"
@@ -85,14 +85,14 @@
                 android:src="@mipmap/login_pasw" />
 
             <EditText
-                android:text="@={viewModelLogin.password}"
+                android:text="@={vm_login.password}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="@dimen/dp_50"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:inputType="@{viewModelLogin.pswShow?InputType.TYPE_CLASS_TEXT:(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD)}"
+                android:inputType="@{vm_login.pswShow?InputType.TYPE_CLASS_TEXT:(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD)}"
                 android:maxLength="20"
                 android:maxLines="1"
                 android:background="@null"
@@ -109,8 +109,8 @@
                 android:textColor="@android:color/white"
                 android:shadowColor="@color/white"
                 android:outlineAmbientShadowColor="@color/white"
-                android:src="@{viewModelLogin.pswShow?@drawable/ic_show:@drawable/ic_show_off}"
-                android:onClick="@{viewModelLogin.toggleShowPassword()}"
+                android:src="@{vm_login.pswShow?@drawable/ic_show:@drawable/ic_show_off}"
+                android:onClick="@{vm_login.toggleShowPassword()}"
                 />
         </LinearLayout>
         <Button

@@ -7,7 +7,7 @@ import java.util.List;
  * 首页轮播图bean
  * Created By Tobey on 2021/6/10
  */
-public class banner_bean implements Serializable {
+public class banner_bean{
 
 
     private int code;
