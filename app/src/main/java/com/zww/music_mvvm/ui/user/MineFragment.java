@@ -46,7 +46,8 @@ public class MineFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMineBinding.inflate(inflater);
-        homeViewMode = new ViewModelProvider(this).get(MainViewModel.class);
+        //传入activity，使得和activity共用同一个ViewModel
+        homeViewMode = new ViewModelProvider(getActivity()).get(MainViewModel.class);
         viewModel = new ViewModelProvider(this).get(MineFragmentViewModel.class);
         binding.setLifecycleOwner(this);
         binding.setVm(homeViewMode);
